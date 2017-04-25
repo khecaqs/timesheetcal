@@ -48,18 +48,22 @@ public function __construct()
 
 		$data['calendar'] = $this->Mycal_model->generate($year , $month);
 
-		$this->load->view('mycal', $data);
+		$this->load->view('cal/mycal', $data);
 
 	}
-	/*function senarai(){
+	function senarai(){
 		$this->load->model('Mycal_model');
 		$data['senarai'] = $this->Mycal_model->get_list();
 		$this->load->view('mycal', $data);
-	}*/
+	}
 	
-	function senarai()
+	function admin()
         {
-            $d['records'] = $this->Mycal_model->snr_d();
-            $this->load->view('mycal', $d);
+            $query = $this->db->query('select * from calendar ORDER BY trkh ASC');
+			$rows = $query->result();
+			$data=array(
+			'result' => $rows
+			);
+			$this->load->view('cal/mycaladmin',$data);
         }
 }

@@ -1,3 +1,4 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php
 
 
@@ -55,7 +56,7 @@ public function __construct()
 	
 	function snr_d()
     {
-        $q = $this->db->query("SELECT trkh, data FROM calendar");
+        $q = $this->db->query("SELECT trkh, data FROM calendar ");
         return $q->result_array();    
     }
 	

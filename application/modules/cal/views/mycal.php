@@ -1,3 +1,5 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -11,7 +13,7 @@
     <script src="<?php echo base_url('assets/js/jquery-1.12.0.min.js'); ?>"></script>
     <!--load jquery ui js file-->
     <script src="<?php echo base_url('assets/js/jquery-ui-1.11.4/jquery-ui.min.js'); ?>"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css">
+   <!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -37,59 +39,59 @@
 	}
 	</style>
 
-			<script type="text/javascript">
-					$(document).ready(function() {
-						
-						var day_data;
-						var day_num;
-						
-						$("#dialog").dialog({
-						autoOpen: false,
-						show: {
-							effect: "fade",
-							duration: 1000
-						},
-						hide: {
-							effect: "blind",
-							duration: 500 
-						},
-						buttons: { 
-							Ok: function() {
-								//$("#nameentered").text($("#name").val());
-								day_data = $( '#data' ).val();
-								submit();
-								$(this).dialog("close");
-						   },
-							Cancel: function () {
-								$(this).dialog("close");
-							}
-						}
-					});
-
-					$('.calendar .day').click(function(){
-						$("#dialog").dialog("open");
-						day_num = $(this).find('.day_num').html();
-					});
-					
-					function submit()
-					{
-						$.ajax({
-							url: window.location,
-							type: 'POST',
-							data: {
-								day: day_num,
-								data: day_data
-							},
-							success: function(msg){
-								//alert( msg )
-								location.reload();
-							}
-						});
+	<script type="text/javascript">
+			$(document).ready(function() {
+				
+				var day_data;
+				var day_num;
+				
+				$("#dialog").dialog({
+				autoOpen: false,
+				show: {
+					effect: "fade",
+					duration: 1000
+				},
+				hide: {
+					effect: "blind",
+					duration: 500 
+				},
+				buttons: { 
+					Ok: function() {
+						//$("#nameentered").text($("#name").val());
+						day_data = $( '#data' ).val();
+						submit();
+						$(this).dialog("close");
+				   },
+					Cancel: function () {
+						$(this).dialog("close");
 					}
-					
+				}
+			});
 
+			$('.calendar .day').click(function(){
+				$("#dialog").dialog("open");
+				day_num = $(this).find('.day_num').html();
+			});
+			
+			function submit()
+			{
+				$.ajax({
+					url: window.location,
+					type: 'POST',
+					data: {
+						day: day_num,
+						data: day_data
+					},
+					success: function(msg){
+						//alert( msg )
+						location.reload();
+					}
 				});
-			</script>	
+			}
+			
+
+		});
+	</script>	
 	
 <!-- 	<script src="<?php //echo base_url("assets/js/jquery-1.12.0.min.js"); ?>" type="text/javascript"></script> -->
 <!-- 	<script src="<?php //echo base_url("assets/js/1.11.4/jquery-ui.js"); ?>" type="text/javascript"></script>
@@ -106,25 +108,6 @@
 			<div id="dialog" title="Kerja Hari Ini">
 				<textarea id="data"></textarea>
 			</div>
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading"> Senarai kerja </div>
-		<div class="panel-body">
-			
-				<table>
-					<tr>
-						<td>Tarikh</td>
-						<td>&nbsp; &nbsp; </td>
-						<td>Perkara</td>
-					</tr>
-			<?php	foreach ($records as $snr): ?>
-					<tr>
-            <td><a href="<?php base_url()?>update/<?php echo $snr['TRKH']; ?>" /> <?php echo $snr['TRKH']; ?> </a></td>
-					<td>&nbsp; &nbsp;</td>
-				<td><?php echo $snr['DATA']; ?></td>
-			</tr>
-    <?php endforeach; ?>
 		</div>
 	</div>
 </div>
