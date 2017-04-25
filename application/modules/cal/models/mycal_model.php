@@ -47,18 +47,24 @@ public function __construct()
 		}
 	}
 
-	function get_list(){
+	/*function get_list(){
 		//$query = $this->db->select('data,date')->from('calendar')->get();
 		$query = $this->db->get('calendar');
 		return $query;
-	}
+	}*/
+	
+	function snr_d()
+    {
+        $q = $this->db->query("SELECT trkh, data FROM calendar");
+        return $q->result_array();    
+    }
 	
 	function generate($year, $month)
 	{
 
 		$conf = array(
 			'show_next_prev' => true,
-			'next_prev_url' => base_url() . '/cal/mycal/display'
+			'next_prev_url' => base_url() . '/cal/mycal_cont/display'
 
 			);
 		

@@ -112,9 +112,9 @@
 		<div class="panel-heading"> Senarai kerja </div>
 		<div class="panel-body">
 			<?php
-				foreach ($senarai as $snr):
+				foreach ($records as $snr):
 					//echo $snr->date;
-					echo $snr->data;
+					echo $snr['data'];
 				endforeach;
 			?>
 			

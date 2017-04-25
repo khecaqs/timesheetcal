@@ -51,9 +51,15 @@ public function __construct()
 		$this->load->view('mycal', $data);
 
 	}
-	function senarai(){
+	/*function senarai(){
 		$this->load->model('Mycal_model');
 		$data['senarai'] = $this->Mycal_model->get_list();
 		$this->load->view('mycal', $data);
-	}
+	}*/
+	
+	function senarai()
+        {
+            $data['records'] = $this->Mycal_model->snr_d();
+            $this->load->view('cal/mycal', $data);
+        }
 }
