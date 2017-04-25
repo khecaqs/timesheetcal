@@ -59,7 +59,7 @@ public function __construct()
 	
 	function senarai()
         {
-            $data['records'] = $this->Mycal_model->snr_d();
-            $this->load->view('cal/mycal', $data);
+            $d['records'] = $this->Mycal_model->snr_d();
+            $this->load->view('mycal', $d);
         }
 }

@@ -111,13 +111,20 @@
 	<div class="panel panel-default">
 		<div class="panel-heading"> Senarai kerja </div>
 		<div class="panel-body">
-			<?php
-				foreach ($records as $snr):
-					//echo $snr->date;
-					echo $snr['data'];
-				endforeach;
-			?>
 			
+				<table>
+					<tr>
+						<td>Tarikh</td>
+						<td>&nbsp; &nbsp; </td>
+						<td>Perkara</td>
+					</tr>
+			<?php	foreach ($records as $snr): ?>
+					<tr>
+            <td><a href="<?php base_url()?>update/<?php echo $snr['TRKH']; ?>" /> <?php echo $snr['TRKH']; ?> </a></td>
+					<td>&nbsp; &nbsp;</td>
+				<td><?php echo $snr['DATA']; ?></td>
+			</tr>
+    <?php endforeach; ?>
 		</div>
 	</div>
 </div>
